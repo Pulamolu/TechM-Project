@@ -1,0 +1,21 @@
+<div class="auth-page">
+  <div class="auth-card">
+    <p class="eyebrow">Task Manager</p>
+    <h1>Reset password</h1>
+    <p class="subtitle">Enter your email to receive reset instructions.</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" placeholder="you@example.com" autocomplete="email" />
+        <small class="error" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">Enter a valid email address.</small>
+      </div>
+
+      <small class="info" *ngIf="message">{{ message }}</small>
+
+      <button type="submit" class="primary-btn" [disabled]="loading">{{ loading ? 'Sending…' : 'Send reset link' }}</button>
+    </form>
+
+    <p class="switch-link"><a routerLink="/login">Back to login</a></p>
+  </div>
+</div>

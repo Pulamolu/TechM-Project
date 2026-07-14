@@ -1,0 +1,34 @@
+<div class="auth-page">
+  <div class="auth-card">
+    <p class="eyebrow">Task Manager</p>
+    <h1>Log in</h1>
+    <p class="subtitle">Pick up where your day left off.</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" placeholder="you@example.com" autocomplete="email" />
+        <small class="error" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+          Enter a valid email address.
+        </small>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password" placeholder="••••••••" autocomplete="current-password" />
+        <small class="error" *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+          Password must be at least 6 characters.
+        </small>
+      </div>
+
+      <small class="error server-error" *ngIf="errorMessage">{{ errorMessage }}</small>
+
+      <button type="submit" class="primary-btn" [disabled]="loading">
+        {{ loading ? 'Logging in…' : 'Log in' }}
+      </button>
+    </form>
+
+    <p class="switch-link">No account yet? <a routerLink="/register">Register here</a></p>
+    <p class="switch-link"><a routerLink="/forgot">Forgot password?</a></p>
+  </div>
+</div>
